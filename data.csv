@@ -57,3 +57,15 @@ FROM super_store
 GROUP BY sub_category
 ORDER BY total_sales DESC, total_profit ASC
 limit 3;
+
+-- Q2. Show only the first 10 records.
+select * from super_store
+
+limit 10 ; 
+
+-- Q3. Show only Category, Sub_Category, Sales, and Profit.
+select category, sub_category, sales, profit
+from super_store;
+
+select * from super_store;
+
