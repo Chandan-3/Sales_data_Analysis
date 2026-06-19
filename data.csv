@@ -1,1 +1,59 @@
+-- What is the total sales?
+SELECT 
+    SUM(sales) AS Total_sales
+FROM
+    super_store;
 
+-- How many records do we have in this dataset?
+SELECT 
+    COUNT(*) AS Total_Records
+FROM
+    super_store;
+
+-- Which region generates the highest sales?
+SELECT 
+    region, SUM(sales) AS Highest_sales
+FROM
+    super_store
+GROUP BY region
+ORDER BY Highest_sales DESC
+LIMIT 1;
+
+-- Which category generates the highest sales?
+SELECT 
+    category, SUM(sales) AS Highest_selling
+FROM
+    super_store
+GROUP BY category
+ORDER BY Highest_selling DESC
+LIMIT 1;
+
+-- Which segment contribute the most of sales?
+SELECT 
+    segment, SUM(sales) AS Most_selling
+FROM
+    super_store
+GROUP BY segment
+ORDER BY Most_selling DESC
+LIMIT 1;
+
+
+-- Intermediate level
+-- What are the top 5 sub-categories by sales?
+SELECT 
+    sub_category, SUM(sales) AS Total_sales
+FROM
+    super_store
+GROUP BY sub_category
+ORDER BY Total_sales DESC
+LIMIT 5;
+
+-- which sub-categories is generating highest sales but low profit?
+SELECT 
+    sub_category,
+    SUM(sales) AS total_sales,
+    SUM(profit) AS total_profit
+FROM super_store
+GROUP BY sub_category
+ORDER BY total_sales DESC, total_profit ASC
+limit 3;
