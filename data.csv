@@ -91,6 +91,15 @@ FROM
 WHERE
     region = 'west'
 LIMIT 15;
-
+-- Find the top 5 sub-categories with high total sales but low profit margin.
+use store;
+SELECT 
+    sub_category,
+    SUM(sales) AS total_sales,
+    SUM(profit) AS total_profit
+FROM super_store
+GROUP BY sub_category
+ORDER BY total_sales DESC, total_profit ASC
+limit 5;
 
 
