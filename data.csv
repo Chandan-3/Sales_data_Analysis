@@ -3,7 +3,6 @@ SELECT
     SUM(sales) AS Total_sales
 FROM
     super_store;
-
 -- How many records do we have in this dataset?
 SELECT 
     COUNT(*) AS Total_Records
@@ -102,4 +101,9 @@ GROUP BY sub_category
 ORDER BY total_sales DESC, total_profit ASC
 limit 5;
 
-
+-- Which states generate the highest profit?
+select state,
+ sum(profit) as total_profit
+from super_store
+group by state
+limit 5;
