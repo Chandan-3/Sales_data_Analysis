@@ -67,5 +67,30 @@ limit 10 ;
 select category, sub_category, sales, profit
 from super_store;
 
+-- Q2. Show only the first 10 records.
+select * from super_store
+
+limit 10 ; 
+
+-- Q3. Show only Category, Sub_Category, Sales, and Profit.
+select category, sub_category, sales, profit
+from super_store;
+
 select * from super_store;
+-- Q4. Find all orders from the Consumer segment.
+SELECT *
+FROM super_store
+WHERE Segment = 'Consumer'
+LIMIT 10;
+
+-- Find all orders from the West region.
+SELECT 
+    *
+FROM
+    super_store
+WHERE
+    region = 'west'
+LIMIT 15;
+
+
 
