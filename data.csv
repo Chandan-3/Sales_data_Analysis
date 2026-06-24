@@ -229,3 +229,16 @@ SELECT
 FROM super_store
 GROUP BY discount_group
 ORDER BY profit_margin_percent ASC;
+
+-- Which states generate strong sales but still lose money?
+
+SELECT
+    state,
+    ROUND(SUM(sales), 2) AS total_sales,
+    ROUND(SUM(profit), 2) AS total_profit,
+    ROUND((SUM(profit) / NULLIF(SUM(sales), 0)) * 100, 2) AS profit_margin_percent
+FROM super_store
+GROUP BY state
+HAVING SUM(sales) > 10000
+   AND SUM(profit) < 0
+ORDER BY total_sales DESC;
