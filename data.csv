@@ -163,3 +163,14 @@ GROUP BY city
 HAVING SUM(sales) > 5000
 ORDER BY profit_margin_percent ASC
 LIMIT 10;
+
+-- Which shipping mode generates the highest sales and profit?
+
+SELECT 
+    ship_mode,
+    COUNT(*) AS total_orders,
+    ROUND(SUM(sales), 2) AS total_sales,
+    ROUND(SUM(profit), 2) AS total_profit
+FROM super_store
+GROUP BY ship_mode
+ORDER BY total_sales DESC;
