@@ -139,3 +139,27 @@ SELECT
 FROM super_store
 GROUP BY category
 ORDER BY average_discount DESC;
+
+-- Which customer segment performs best in sales and profit?
+
+SELECT 
+    segment,
+    ROUND(SUM(sales), 2) AS total_sales,
+    ROUND(SUM(profit), 2) AS total_profit,
+    ROUND((SUM(profit) / SUM(sales)) * 100, 2) AS profit_margin_percent
+FROM super_store
+GROUP BY segment
+ORDER BY total_sales DESC;
+
+-- Which cities generate high sales but low profit?
+
+SELECT 
+    city,
+    ROUND(SUM(sales), 2) AS total_sales,
+    ROUND(SUM(profit), 2) AS total_profit,
+    ROUND((SUM(profit) / SUM(sales)) * 100, 2) AS profit_margin_percent
+FROM super_store
+GROUP BY city
+HAVING SUM(sales) > 5000
+ORDER BY profit_margin_percent ASC
+LIMIT 10;
