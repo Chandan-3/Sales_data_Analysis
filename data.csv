@@ -174,3 +174,28 @@ SELECT
 FROM super_store
 GROUP BY ship_mode
 ORDER BY total_sales DESC;
+
+DESCRIBE super_store;
+
+-- What are the company’s overall sales, profit, quantity, average discount, and profit margin?
+
+SELECT
+    ROUND(SUM(sales), 2) AS total_sales,
+    ROUND(SUM(profit), 2) AS total_profit,
+    SUM(quantity) AS total_quantity,
+    ROUND(AVG(discount), 2) AS avg_discount,
+    ROUND((SUM(profit) / NULLIF(SUM(sales), 0)) * 100, 2) AS profit_margin_percent,
+    COUNT(*) AS total_records
+FROM super_store;
+
+-- Which region performs best in sales and profitability?
+
+SELECT
+    region,
+    ROUND(SUM(sales), 2) AS total_sales,
+    ROUND(SUM(profit), 2) AS total_profit,
+    ROUND((SUM(profit) / NULLIF(SUM(sales), 0)) * 100, 2) AS profit_margin_percent,
+    SUM(quantity) AS total_quantity
+FROM super_store
+GROUP BY region
+ORDER BY total_sales DESC;
