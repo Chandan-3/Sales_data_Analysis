@@ -269,3 +269,7 @@ FROM (
 ) ranked_data
 WHERE sales_rank <= 3
 ORDER BY category, sales_rank;
+
+SELECT *
+FROM super_store
+WHERE category IN ('Furniture', 'Technology') and city Like 'Chicago%';
