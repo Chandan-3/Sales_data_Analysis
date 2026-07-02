@@ -273,3 +273,15 @@ ORDER BY category, sales_rank;
 SELECT *
 FROM super_store
 WHERE category IN ('Furniture', 'Technology') and city Like 'Chicago%';
+
+-- For only Consumer customers, which sub-categories have total sales above 10,000?
+
+Use store;
+SELECT 
+    sub_category,
+    SUM(sales) AS total_sales,
+    SUM(profit) AS total_profit
+FROM super_store
+WHERE segment = 'Consumer'
+GROUP BY sub_category
+HAVING SUM(sales) > 10000
